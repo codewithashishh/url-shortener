@@ -1,14 +1,20 @@
+const {checkAuthentication} = require("../middleware/auth")
 const express = require("express");
 const router = express.Router();
 
 const URL = require("../models/model");
 
-router.get("/", async (req, res) => {
+router.get("/", checkAuthentication, async (req, res) => {
     const allUrls = await URL.find({});
 
     return res.render("home", {
         urls: allUrls,
     });
 });
+
+
+
+
+
 
 module.exports = router;
