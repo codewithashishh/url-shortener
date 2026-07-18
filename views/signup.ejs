@@ -1,140 +1,214 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener | Sign Up</title>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, Helvetica, sans-serif;
+```
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
     }
 
-    body{
-      background:#f4f4f4;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f5f0ff;
+        color: #2d2340;
+        padding: 20px;
     }
 
-    .container{
-      width:350px;
-      background:#fff;
-      padding:30px;
-      border-radius:10px;
-      box-shadow:0 0 10px rgba(0,0,0,0.15);
+    .container {
+        width: 100%;
+        max-width: 370px;
+        background: white;
+        padding: 40px 35px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(109, 76, 175, 0.08);
     }
 
-    h2{
-      text-align:center;
-      margin-bottom:25px;
-      color:#333;
+    .logo {
+        width: 65px;
+        height: 65px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        background: #7653b8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 28px;
     }
 
-    .input-group{
-      margin-bottom:18px;
+    h2 {
+        text-align: center;
+        color: #6d4caf;
+        margin-bottom: 8px;
+        font-size: 28px;
     }
 
-    label{
-      display:block;
-      margin-bottom:6px;
-      font-weight:bold;
+    .subtitle {
+        text-align: center;
+        color: #8b8099;
+        margin-bottom: 30px;
+        font-size: 14px;
     }
 
-    input{
-      width:100%;
-      padding:10px;
-      border:1px solid #ccc;
-      border-radius:5px;
-      font-size:15px;
+    .input-group {
+        margin-bottom: 18px;
     }
 
-    button{
-      width:100%;
-      padding:12px;
-      background:#222;
-      color:white;
-      border:none;
-      border-radius:5px;
-      cursor:pointer;
-      font-size:16px;
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #4a3b5c;
+        font-size: 14px;
     }
 
-    button:hover{
-      background:#444;
+    input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #d9ccef;
+        border-radius: 7px;
+        outline: none;
+        transition: 0.2s;
+        font-size: 15px;
+        color: #2d2340;
     }
 
-    p{
-      text-align:center;
-      margin-top:18px;
+    input::placeholder {
+        color: #9d91ad;
     }
 
-    a{
-      text-decoration:none;
-      color:#007bff;
+    input:focus {
+        border-color: #8b6bc5;
+        box-shadow: 0 0 0 3px rgba(139, 107, 197, 0.1);
     }
 
-    a:hover{
-      text-decoration:underline;
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 7px;
+        background: #7c5cbf;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.2s;
+        margin-top: 4px;
     }
-  </style>
+
+    button:hover {
+        background: #6849a8;
+    }
+
+    .login {
+        text-align: center;
+        margin-top: 22px;
+        color: #756b80;
+        font-size: 14px;
+    }
+
+    .login a {
+        text-decoration: none;
+        color: #7653b8;
+        font-weight: 600;
+    }
+
+    .login a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 450px) {
+        .container {
+            padding: 35px 25px;
+        }
+    }
+</style>
+```
 
 </head>
+
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h2>Create Account</h2>
+```
+<div class="logo">
+    🔗
+</div>
 
-    <form action="/user/signup" method="POST">
+<h2>Create Account</h2>
 
-      <div class="input-group">
+<p class="subtitle">
+    Sign up to start shortening your URLs
+</p>
+
+<form action="/user/signup" method="POST">
+
+    <div class="input-group">
+
         <label for="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Enter your name"
-          required
-        >
-      </div>
 
-      <div class="input-group">
+        <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            required
+        >
+
+    </div>
+
+    <div class="input-group">
+
         <label for="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter your email"
-          required
-        >
-      </div>
 
-      <div class="input-group">
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+        >
+
+    </div>
+
+    <div class="input-group">
+
         <label for="password">Password</label>
+
         <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter your password"
-          required
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
         >
-      </div>
 
-      <button type="submit">Sign Up</button>
+    </div>
 
-    </form>
+    <button type="submit">
+        Sign Up
+    </button>
 
-    <p>
-      Already have an account?
-      <a href="/login">Login</a>
-    </p>
+</form>
 
-  </div>
+<p class="login">
+    Already have an account?
+    <a href="/user/login">Login</a>
+</p>
+```
+
+</div>
 
 </body>
 </html>

@@ -20,12 +20,17 @@ async function takeUrls(req, res){
 await url.create({
     originalUrl: req.body.originalUrl,
     shortId,
+    createdBy: req.session.userId,
 });
 
-return res.json({
-    message: "URL created successfully",
-    shortUrl: `http://localhost:8000/${shortId}`,
+
+const allUrls = await url.find({
+    createdBy: req.session.userId,
 });
+
+ return res.render("home", {
+        urls: allUrls,
+    });
 }
 
 async function getUrlById(req, res){

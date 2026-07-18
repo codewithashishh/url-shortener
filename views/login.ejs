@@ -1,166 +1,208 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URL Shortener | Login</title>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial, Helvetica, sans-serif;
-        }
+```
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-        body{
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            background:linear-gradient(135deg,#2563eb,#4f46e5);
-        }
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f5f0ff;
+        color: #2d2340;
+        padding: 20px;
+    }
 
-        .container{
-            width:370px;
-            background:white;
-            padding:40px 35px;
-            border-radius:18px;
-            box-shadow:0 20px 40px rgba(0,0,0,.25);
-        }
+    .container {
+        width: 100%;
+        max-width: 370px;
+        background: white;
+        padding: 40px 35px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(109, 76, 175, 0.08);
+    }
 
-        h1{
-            text-align:center;
-            color:#1f2937;
-            margin-bottom:8px;
-        }
+    .logo {
+        width: 65px;
+        height: 65px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        background: #7653b8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 28px;
+    }
 
-        p{
-            text-align:center;
-            color:gray;
-            margin-bottom:30px;
-            font-size:14px;
-        }
+    h1 {
+        text-align: center;
+        color: #6d4caf;
+        margin-bottom: 8px;
+        font-size: 28px;
+    }
 
-        .input-box{
-            margin-bottom:18px;
-        }
+    p {
+        text-align: center;
+        color: #8b8099;
+        margin-bottom: 30px;
+        font-size: 14px;
+    }
 
-        .input-box label{
-            display:block;
-            margin-bottom:8px;
-            font-weight:bold;
-            color:#374151;
-        }
+    .input-box {
+        margin-bottom: 18px;
+    }
 
-        .input-box input{
-            width:100%;
-            padding:13px;
-            border:1px solid #d1d5db;
-            border-radius:8px;
-            outline:none;
-            transition:.3s;
-            font-size:15px;
-        }
+    .input-box label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #4a3b5c;
+        font-size: 14px;
+    }
 
-        .input-box input:focus{
-            border-color:#2563eb;
-            box-shadow:0 0 6px rgba(37,99,235,.3);
-        }
+    .input-box input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #d9ccef;
+        border-radius: 7px;
+        outline: none;
+        transition: 0.2s;
+        font-size: 15px;
+        color: #2d2340;
+    }
 
-        .forgot{
-            text-align:right;
-            margin-bottom:22px;
-        }
+    .input-box input::placeholder {
+        color: #9d91ad;
+    }
 
-        .forgot a{
-            text-decoration:none;
-            color:#2563eb;
-            font-size:14px;
-        }
+    .input-box input:focus {
+        border-color: #8b6bc5;
+        box-shadow: 0 0 0 3px rgba(139, 107, 197, 0.1);
+    }
 
-        button{
-            width:100%;
-            padding:14px;
-            border:none;
-            border-radius:8px;
-            background:#2563eb;
-            color:white;
-            font-size:16px;
-            cursor:pointer;
-            transition:.3s;
-        }
+    .forgot {
+        text-align: right;
+        margin-bottom: 22px;
+    }
 
-        button:hover{
-            background:#1d4ed8;
-        }
+    .forgot a {
+        text-decoration: none;
+        color: #7653b8;
+        font-size: 14px;
+    }
 
-        .signup{
-            text-align:center;
-            margin-top:22px;
-            color:#555;
-        }
+    .forgot a:hover {
+        text-decoration: underline;
+    }
 
-        .signup a{
-            text-decoration:none;
-            color:#2563eb;
-            font-weight:bold;
-        }
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 7px;
+        background: #7c5cbf;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
 
-        .logo{
-            width:70px;
-            height:70px;
-            margin:0 auto 20px;
-            border-radius:50%;
-            background:#2563eb;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            color:white;
-            font-size:30px;
-            font-weight:bold;
+    button:hover {
+        background: #6849a8;
+    }
+
+    .signup {
+        text-align: center;
+        margin-top: 22px;
+        color: #756b80;
+        font-size: 14px;
+    }
+
+    .signup a {
+        text-decoration: none;
+        color: #7653b8;
+        font-weight: 600;
+    }
+
+    .signup a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 450px) {
+        .container {
+            padding: 35px 25px;
         }
-    </style>
+    }
+</style>
+```
 
 </head>
+
 <body>
 
 <div class="container">
 
-    <div class="logo">
-        🔗
+```
+<div class="logo">
+    🔗
+</div>
+
+<h1>Welcome Back</h1>
+
+<p>Login to manage your shortened URLs</p>
+
+<form action="/user/login" method="post">
+
+    <div class="input-box">
+        <label>Email</label>
+
+        <input
+            name="email"
+            type="email"
+            placeholder="Enter your email"
+            required
+        >
     </div>
 
-    <h1>Welcome Back</h1>
+    <div class="input-box">
+        <label>Password</label>
 
-    <p>Login to manage your shortened URLs</p>
-
-    <form action="/user/login" method="post">
-
-        <div class="input-box">
-            <label>Email</label>
-            <input name="email" type="email" placeholder="Enter your email" 
-            required >
-        </div>
-
-        <div class="input-box">
-            <label>Password</label>
-            <input name="password" type="password" placeholder="Enter your password"
-            required >
-        </div>
-
-        <div class="forgot">
-            <a href="#">Forgot Password?</a>
-        </div>
-
-        <button type="submit">Login</button>
-
-    </form>
-
-    <div class="signup">
-        Don't have an account?
-        <a href="/signup">Create Account</a>
+        <input
+            name="password"
+            type="password"
+            placeholder="Enter your password"
+            required
+        >
     </div>
+
+    <div class="forgot">
+        <a href="#">Forgot Password?</a>
+    </div>
+
+    <button type="submit">
+        Login
+    </button>
+
+</form>
+
+<div class="signup">
+    Don't have an account?
+    <a href="/user/signup">Create Account</a>
+</div>
+```
 
 </div>
 

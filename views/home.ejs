@@ -1,142 +1,258 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URL Shortener</title>
 
-    <style>
+```
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial;
+    body {
+        min-height: 100vh;
+        padding: 50px;
+        background: #f5f0ff;
+        color: #2d2340;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    h1 {
+        color: #6d4caf;
+        font-size: 30px;
+    }
+
+    .logout-form {
+        margin: 0;
+    }
+
+    .logout-btn {
+        background: transparent;
+        color: #7653b8;
+        border: 1px solid #b9a3e3;
+    }
+
+    .logout-btn:hover {
+        background: #ede3ff;
+    }
+
+    .shortener-card {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(109, 76, 175, 0.08);
+        margin-bottom: 30px;
+    }
+
+    .url-form {
+        display: flex;
+        gap: 12px;
+    }
+
+    input {
+        flex: 1;
+        padding: 12px 15px;
+        font-size: 16px;
+        border: 1px solid #d9ccef;
+        border-radius: 7px;
+        outline: none;
+        color: #2d2340;
+    }
+
+    input:focus {
+        border-color: #8b6bc5;
+    }
+
+    input::placeholder {
+        color: #9d91ad;
+    }
+
+    button {
+        padding: 12px 22px;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+        font-size: 15px;
+        transition: 0.2s;
+    }
+
+    .shorten-btn {
+        background: #7c5cbf;
+        color: white;
+    }
+
+    .shorten-btn:hover {
+        background: #6849a8;
+    }
+
+    .table-container {
+        overflow-x: auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(109, 76, 175, 0.08);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #eee8f7;
+    }
+
+    th {
+        background: #7653b8;
+        color: white;
+        font-weight: 500;
+    }
+
+    th:first-child {
+        border-radius: 12px 0 0 0;
+    }
+
+    th:last-child {
+        border-radius: 0 12px 0 0;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    tbody tr:hover {
+        background: #faf7ff;
+    }
+
+    a {
+        text-decoration: none;
+        color: #7653b8;
+        font-weight: 500;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            padding: 25px 15px;
         }
 
-        body{
-            padding:40px;
-            background:#f5f5f5;
+        .url-form {
+            flex-direction: column;
         }
 
-        h1{
-            margin-bottom:20px;
+        .header {
+            gap: 15px;
         }
 
-        form{
-            display:flex;
-            gap:10px;
-            margin-bottom:30px;
+        h1 {
+            font-size: 24px;
         }
-
-        input{
-            flex:1;
-            padding:10px;
-            font-size:16px;
-        }
-
-        button{
-            padding:10px 20px;
-            cursor:pointer;
-        }
-
-        table{
-            width:100%;
-            border-collapse:collapse;
-            background:white;
-        }
-
-        th,td{
-            border:1px solid #ddd;
-            padding:12px;
-            text-align:left;
-        }
-
-        th{
-            background:#222;
-            color:white;
-        }
-
-        a{
-            text-decoration:none;
-            color:blue;
-        }
-
-    </style>
+    }
+</style>
+```
 
 </head>
+
 <body>
 
-<h1>URL Shortener</h1>
+<div class="container">
 
-<form action="/urls" method="POST">
+```
+<div class="header">
+    <h1>URL Shortener</h1>
 
-    <input
-        type="text"
-        name="originalUrl"
-        placeholder="Enter Original URL"
-        required
-    >
+    <form action="/user/logout" method="POST" class="logout-form">
+        <button type="submit" class="logout-btn">
+            Logout
+        </button>
+    </form>
+</div>
 
-    <button type="submit">
-        Shorten
-    </button>
+<div class="shortener-card">
 
-</form>
+    <form action="/" method="POST" class="url-form">
 
-<table>
+        <input
+            type="text"
+            name="originalUrl"
+            placeholder="Enter Original URL"
+            required
+        >
 
-<thead>
+        <button type="submit" class="shorten-btn">
+            Shorten
+        </button>
 
-<tr>
+    </form>
 
-<th>Short URL</th>
+</div>
 
-<th>Original URL</th>
+<div class="table-container">
 
-<th>Clicks</th>
+    <table>
 
-</tr>
+        <thead>
+            <tr>
+                <th>Short URL</th>
+                <th>Original URL</th>
+                <th>Clicks</th>
+            </tr>
+        </thead>
 
-</thead>
+        <tbody>
 
-<tbody>
+            <% urls.forEach(url => { %>
 
-<% urls.forEach(url => { %>
+                <tr>
 
-<tr>
+                    <td>
+                        <a href="/<%= url.shortId %>" target="_blank">
+                            http://localhost:8000/<%= url.shortId %>
+                        </a>
+                    </td>
 
-<td>
+                    <td>
+                        <%= url.originalUrl %>
+                    </td>
 
-<a href="/<%= url.shortId %>" target="_blank">
+                    <td>
+                        <%= url.noOfTimesClicked %>
+                    </td>
 
-http://localhost:8000/<%= url.shortId %>
+                </tr>
 
-</a>
+            <% }) %>
 
-</td>
+        </tbody>
 
-<td>
+    </table>
 
-<%= url.originalUrl %>
+</div>
+```
 
-</td>
+</div>
 
-<td>
-
-<%= url.noOfTimesClicked %>
-
-</td>
-
-</tr>
-
-<% }) %>
-
-</tbody>
-
-</table>
-<form action="/user/logout" method="POST">
-    <button type="submit">Logout</button>
-</form>
 </body>
 </html>
