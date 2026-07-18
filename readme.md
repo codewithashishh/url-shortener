@@ -1,6 +1,6 @@
 # URL Shortener
 
-A server-side URL shortener application built with Node.js, Express.js, MongoDB, Mongoose, and EJS. The project allows users to create shortened URLs and tracks the number of times each shortened URL is visited.
+A server-side URL shortener application built with Node.js, Express.js, MongoDB, Mongoose, and EJS. The project allows users to create shortened URLs, track the number of times each URL is visited, and view URLs associated with their own account.
 
 ## Features
 
@@ -14,6 +14,8 @@ A server-side URL shortener application built with Node.js, Express.js, MongoDB,
 * Protected routes using authentication middleware
 * Logout functionality
 * Duplicate email validation during signup
+* Associate shortened URLs with individual users
+* Display only URLs created by the currently logged-in user
 
 ## Tech Stack
 
@@ -34,15 +36,18 @@ A server-side URL shortener application built with Node.js, Express.js, MongoDB,
 5. After successful login, the user's MongoDB ID is stored in the server-side session.
 6. The browser receives a session cookie containing the session identifier.
 7. Authentication middleware protects the URL shortener page from unauthenticated users.
-8. Logging out destroys the user's session.
+8. URLs created by a user are associated with their MongoDB user ID.
+9. Each logged-in user can view only the URLs they have created.
+10. Logging out destroys the user's session.
 
 ## Upcoming Improvements
 
-* Associate shortened URLs with individual users
-* Display only URLs created by the currently logged-in user
+* Add URL editing and deletion
 * Improve error handling and validation
 * Store sensitive configuration using environment variables
 * Add production-ready session storage and cookie configuration
+* Improve the user interface
+* Add more detailed URL analytics
 
 ## Run Locally
 
@@ -63,3 +68,4 @@ The application runs on:
 ```text
 http://localhost:8000
 ```
+
